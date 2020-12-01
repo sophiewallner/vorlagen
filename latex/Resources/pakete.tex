@@ -1,0 +1,347 @@
+%  ------------------------------ Allgemein ------------------------------
+% Querformat:
+% \usepackage[landscape]{geometry}
+
+% deutsche Sprache bei Silbentrennung und Datum:
+\usepackage[ngerman]{babel}
+
+% keine Einrückung bei einem neuen Absatz
+\setlength{\parindent}{0pt}
+
+% Festlegung der Breite und Gestaltung eines Seitenrandes; Hinzufügen mit \marpar{}
+\setlength{\marginparwidth}{2,3cm}
+\newcommand{\marpar}[1]{\marginpar{\scriptsize \color{black!60} \flushleft {#1}}}
+
+% pimpt enumerate auf (optionales Argument liefert Nummerierung):
+\usepackage{enumerate}
+\usepackage{enumitem}
+% Zeilenabstand:
+%\usepackage[
+%  % nur eine Möglichkeit auswählen:
+%  singlespacing
+%  %onehalfspacing
+%  %doublespacing
+%]{setspace}
+
+% Hinzufügen mit \todo{} oder auch \todo[inline]{}
+\usepackage[
+ngerman,
+textwidth=2cm,
+textsize=small,
+backgroundcolor=red!20,
+linecolor=black,
+]{todonotes}
+
+% weiteres todo, dass sich nur auf Formatierung bezieht:
+\newcommand{\ftodo}[1]{\todo[color=blue!20,linecolor=black]{#1}}
+
+% Blindtext
+\usepackage{blindtext}
+\usepackage{rotating}
+\usepackage[list=true, font=large, labelfont=bf, 
+labelformat=brace, position=top]{subcaption}
+% Wörter rot markieren
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+% Abstract
+\usepackage{abstract}
+\addto\captionsngerman{
+\renewcommand{\abstractname}{Abstract}
+}
+
+% Danksagung
+\newcommand\danke{Danksagung}
+\newenvironment{danksagung}
+  {
+  \renewcommand\abstractname{\danke}
+  \begin{abstract}
+  }
+  {\end{abstract}
+  }
+
+% für schlaue Zitate:
+\usepackage{epigraph}
+\setlength{\epigraphwidth}{0.42\textwidth}
+
+% noch kleiner als tiny
+\usepackage{lmodern}
+\newcommand{\supertiny}{\fontsize{4}{4}\selectfont}
+
+% Ermöglicht durch \begin{linenumbers} Zeilennummern anzuzeigen:
+%\usepackage{lineno}
+
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+%  ------------------------------ Mathematik ------------------------------
+\usepackage[
+  leqno,%% Nummerierung von Gleichungen links:
+  fleqn, %% Ausgabe von Gleichungen linksbündig:
+]{mathtools}
+
+\usepackage{amsmath,amssymb,dsfont,upgreek}
+
+% Symbole für theoretische Informatik (z.B. \lightning):
+\usepackage{stmaryrd}
+
+% für Matrizen
+\usepackage{array}
+
+% Betragsstriche und vertikale Striche mit etwas mehr Raum
+\newcommand\abs[1]{\vert #1 \vert}
+\newcommand{\verts}{\, \vert \,}
+
+% Multimenge
+\newcommand{\multiset}[1]{ \{ \vert #1 \vert \} }
+
+% O-Notation
+\newcommand{\BigO}{\mathcal{O}}
+
+% varphi als Standard-Phi und normales Phi (zur Bezeichnung für Isomorphismen)
+\newcommand{\iso}{\upphi}
+\renewcommand{\phi}{\varphi}
+
+% ------------------------------ Definitionen und Sätze ------------------------------ 
+\usepackage{amsthm}
+
+\newtheoremstyle{defpropumgebung}
+{9pt}% measure of space to leave above the theorem. E.g.: 3pt
+{9pt}% measure of space to leave below the theorem. E.g.: 3pt
+{}% name of font to use in the body of the theorem
+{}% measure of space to indent
+{\bfseries}% name of head font
+{\smallskip}% punctuation between head and body
+{\newline}% space after theorem head; " " = normal interword space
+{}% Manually specify head
+
+\theoremstyle{defpropumgebung}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+% \newtheorem{beispiel}{Beispiel}
+\newtheorem{lemma}{Lemma}
+
+\newtheoremstyle{beweisumgebung}
+{9pt}% measure of space to leave above the theorem. E.g.: 3pt
+{9pt}% measure of space to leave below the theorem. E.g.: 3pt
+{}% name of font to use in the body of the theorem
+{}% measure of space to indent
+{\itshape}% name of head font
+{}% punctuation between head and body
+{0.5em}% space after theorem head; " " = normal interword space
+{}% Manually specify head
+
+\theoremstyle{beweisumgebung}
+\newtheorem*{beweis}{Beweis:} % * = ohne Nummerierung für Beweise
+\newcommand{\bewiesen}{
+    \hfill
+    $ \square $  
+}
+
+\newcommand{\gdw}{\text{ gdw. }}
+
+\newtheoremstyle{beispielumgebung}
+{9pt}% measure of space to leave above the theorem. E.g.: 3pt
+{15pt}% measure of space to leave below the theorem. E.g.: 3pt
+{}% name of font to use in the body of the theorem
+{}% measure of space to indent
+{\bfseries}% name of head font
+{\smallskip}% punctuation between head and body
+{\newline}% space after theorem head; " " = normal interword space
+{}% Manually specify head
+
+\theoremstyle{beispielumgebung}
+\newtheorem{beispiel}{Beispiel}
+
+% Subscript Größe anpassen
+\usepackage{scalerel}
+\newcommand{\N}{\scaleto{N}{3.2pt}}
+\newcommand{\C}{\scaleto{C}{3.2pt}}
+\newcommand{\U}{\scaleto{U}{3.2pt}}
+\renewcommand{\S}{\scaleto{S}{3.2pt}}
+\newcommand{\Sp}{\scaleto{S'}{3.2pt}}
+\newcommand{\1}{\scaleto{1}{3.2pt}}
+\newcommand{\2}{\scaleto{2}{3.2pt}}
+\newcommand{\3}{\scaleto{2}{3.2pt}}
+
+%  ------------------------------ Textgestaltung ------------------------------
+\usepackage{microtype}
+\usepackage{ifxetex}
+\ifxetex{}
+\usepackage[MnSymbol]{mathspec}
+  
+\defaultfontfeatures{
+    Ligatures=TeX,
+    Scale=MatchLowercase,
+}
+% Hauptschriftart, Matheschriftart, Theoremschriftart
+\setmainfont[]{Minion Pro}
+\setmathfont(Digits,Latin,Greek)[]{Minion Pro}
+\setmathrm{Minion Pro}
+
+\setallsansfonts[
+    BoldFont = {Gill Sans},
+  ]{Gill Sans}
+\newfontface\titlepagefont{Gill Sans}
+\else
+  \usepackage[utf8]{inputenc}
+\fi
+
+% Unterstreichungen (\uline, \uuline, \sout: durchgestrichen, \uwave):
+%\usepackage{ulem}
+
+% Aufzählungszeichen kleiner als herkömmliche Bullets
+\renewcommand\labelitemi{\boldmath $ \cdot $}
+
+% ------------------------------ Tabellen ------------------------------	
+% kann komplexe Linien in Tabellen ziehen:
+\usepackage{hhline}
+
+% mehrseitige Tabellen:
+%\usepackage{longtable}
+
+% Tabellen mit gedehnten Spalten:
+%\usepackage{tabularx}
+
+% Schönere Tabellen:
+% - \toprule[(Dicke)], \midrule[(Dicke)], \bottomrule[(Dicke)]
+% - \addlinespace: Extrahöhe zwischen Zeilen
+\usepackage{booktabs}
+
+% Kann descriptions auf die selbe Höhe bringen:
+%\usepackage{enumitem}
+
+% bietet gestrichelte vert. Linien in Tabellen (':')
+%\usepackage{arydshln}
+
+% um in Tabellen eine Zelle über mehrere Zeilen laufen zu lassen:
+%\usepackage{multirow}
+
+
+% ------------------------------ Links ------------------------------
+% Liefert Hyperlinks (\hyperref, \url, \href}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=false,
+  linkcolor=black,
+  urlcolor=blue,
+}
+
+% ------------------------------ Algorithmen/Code ------------------------------
+%\usepackage{listings}
+
+% Algorithmen und Pseudocode:
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\floatname{algorithm}{Algorithmus}
+\renewcommand{\algorithmicrequire}{\textbf{Eingabe:}}
+\renewcommand{\algorithmicensure}{\textbf{Ausgabe:}}
+
+% Verbessert fließende Objekte
+%
+%     \begin{figure}[H]
+%     ...
+%     \end{figure}
+% wird’s auch wirklich _hier_ gesetzt
+%\usepackage{float}
+
+% SI-Einheiten mittels \si{}:
+%\usepackage[mode=text]{siunitx}
+%\sisetup{%
+%  output-decimal-marker={,},
+%  per-mode=fraction,
+%  exponent-product=\cdot,
+%}
+%\DeclareSIUnit\cal{cal}
+%\DeclareSIUnit\diopter{dpt}
+%\DeclareSIUnit\fahrenheit{F}
+%\DeclareSIUnit\molar{\textsc{m}}
+%\DeclareSIUnit\pH{pH}
+%\DeclareSIUnit\gewprozent{Gew\%}
+%\DeclareSIUnit\poise{P}
+
+%\usepackage{titlesec}
+%\titleformat*{\paragraph}{\itshape\mdseries} % chktex 6
+% \titleformat{\section}
+%   {\sffamily}{\thesection}{1em}{}
+
+% ein Eintrag in einer description-Liste wird in ganz normaler Schrift angezeigt (kein
+% sans-serif, kein fett):
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}#1}
+
+
+% ------------------------------ Kopf- und Fußzeile ------------------------------
+\usepackage{fancyhdr}
+%% Seitenstil ist natürlich fancy:
+%\pagestyle{fancy}
+%% alle Felder löschen:
+%\fancyhf{}
+%% Veranstaltung:
+%%\fancyhead[L]{}
+%% Seriennummer:
+%%\fancyhead[C]{}
+%% Name und Matrikelnummer:
+%%\fancyhead[R]{}
+%%\fancyfoot[L]{}
+%\fancyfoot[C]{\thepage}
+%%\fancyfoot[C]{\thepage\,/\,\pageref{LastPage}}
+%% Linie oben/unten:
+%\renewcommand{\headrulewidth}{0.0pt}
+%\renewcommand{\footrulewidth}{0.0pt}
+
+% besondere Zeichen:
+%\usepackage{pifont}
+%\newcommand{\cmark}{\ding{51}}%
+%\newcommand{\xmark}{\ding{55}}%
+%\newcommand{\richtig}{\textcolor{ForestGreen}{\cmark}}
+%\newcommand{\falsch}{\textcolor{BrickRed}{\xmark}}
+
+
+% ------------------------------ Abbildungen ------------------------------
+%TIKZ und pgf für grafische Elemente
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,snakes,automata,backgrounds,petri,arrows.meta,positioning}
+% Verbessert den Satz von Abbildungsüberschriften:
+\usepackage{caption}
+\tikzset{
+  transition/.style={shape=rectangle,draw=black,minimum size=0.7cm,inner sep=0.3pt},
+  >=latex,
+  greentoken/.style={shape=circle,draw=black,fill=black!30!green,minimum size=1.5mm,inner sep=0.3pt},
+  bluetoken/.style={shape=circle,draw=black,fill=black!30!blue,minimum size=1.5mm,inner sep=0.3pt}, 
+  redtoken/.style={shape=circle,draw=black,fill=black!30!red,minimum size=1.5mm,inner sep=0.3pt},
+  blacktoken/.style={shape=circle,draw=black,fill=black,minimum size=1.5mm,inner sep=0.3pt},
+  state/.style={circle,fill,inner sep=1pt,label=#1\strut},
+  % stateb/.style={circle,fill,inner sep=1pt,label=above:#1\strut},
+  arrow/.style={-latex, shorten >=1ex, shorten <=1ex}
+}
+% für Zeichnungen:
+%\usetikzlibrary{%
+%  backgrounds,
+%  %mindmap,
+%  %shapes.geometric,
+%  %shapes.symbols,
+%  %shapes.misc,
+%  %shapes.multipart,
+%  %positioning,
+%  %fit,
+%  calc,
+%  arrows,
+%  %automata,
+%  %trees,
+%  %decorations.pathreplacing,
+%  %circuits.ee.IEC,
+%  intersections,
+%  through,
+%}
+
+%\pgfplotsset{compat=1.16}
+
+% eigens gebaute Lochmarken:
+%\usepackage{eso-pic}
+%\AddToShipoutPicture*{
+%\put(\LenToUnit{0mm},\LenToUnit{228.5mm})
+%{\rule{\LenToUnit{20pt}}{\LenToUnit{0.5pt}}}
+%\put(\LenToUnit{0mm},\LenToUnit{68.5mm})
+%{\rule{\LenToUnit{20pt}}{\LenToUnit{0.5pt}}}
+%}

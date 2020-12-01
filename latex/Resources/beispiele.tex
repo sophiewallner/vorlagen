@@ -1,0 +1,142 @@
+\section{Einleitung}
+\label{sec:einleitung}
+
+\blindtext
+Das gleiche Prinzip wird auch in \cite{clarke} beschrieben.
+
+
+% eigene Notizen, die im Laufe der Arbeit ein- oder abgearbeitet werden sollen
+\todo{Ebenfalls können TODOs hinzugefügt werden}
+
+% Definitionen (mit Absatz) und Sätze (ohne Absatz)
+\begin{definition}
+	Das \textit{Definiendum} wird kursiv geschrieben. Ansonsten kann hier alles stehen was man mag.
+\end{definition}
+
+\section{Mathematik}
+\label{sec:mathematik}
+
+Ein bisschen Mathematik im Text ist z.\,B. $x^2 + y^2 = z^2$.
+Es geht aber auch anders:
+% align* verhindert die Nummerierung der Zeilen (sofern keine Referenzierung dieser nötig)
+\begin{align*}
+  {(x+y)}^n & = \sum\limits_{k=0}^{n} \binom{n}{k} x^k y^{n-k}
+  & \int\limits_{-\infty}^{+\infty} e^{-x^2} dx & = \sqrt{\pi}
+\end{align*}
+
+\section{Abbildungen und Tabellen}
+\label{sec:abbildungen}
+
+\subsection{Matrix}
+In der Mathematik-Umgebung können Matrizen eingebunden werden. Hierbei gibt es verschiedene Darstellungsmöglichkeiten, wie: 
+$
+\left(
+	\begin{array}{c c c}
+	1 & 2 & 3 \\
+	2 & 1 & 3 \\
+	3 & 2 & 1 \\
+	\end{array}
+\right)
+ \text{ oder }
+\left[
+\begin{array}{c c c}
+1 & \cdots & 3 \\
+2 & \ddots & 3 \\
+3 & \cdots & 1 \\
+\end{array}
+\right]
+$
+
+\subsection{Tabellen}
+\begin{minipage}{0.5\textwidth}
+\begin{center}
+	\begin{tabular}{|c c c|}
+		\hline
+		Bezeichnung & Merkmal & Rating \\ \hline
+		Igel & Stacheln & 3/5 \\
+		Bär & Tatzen & 4/5 \\
+		Hund & Hecheln & 2/5 \\
+		\hline
+	\end{tabular}
+\end{center}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\begin{center}
+	\begin{tabular}{||cc||c|c||}
+		\hhline{|t:==:t:==:t|}
+		a&b&c&d\\
+		\hhline{|:==:|~|~||}
+		1&2&3&4\\
+		\hhline{#==#~|=#}
+		i&j&k&l\\
+		\hhline{||--||--||}
+		w&x&y&z\\
+		\hhline{|b:==:b:==:b|}
+	\end{tabular}
+\end{center}
+\end{minipage}
+
+\subsection{Petrinetze}
+\begin{figure}
+	\begin{center}
+		\begin{tikzpicture}[
+		whitetoken/.style={shape=circle,draw=black,fill=white,minimum size=1.1mm,inner sep=0.3pt}, 
+		greytoken/.style={shape=circle,draw=black,fill=black!30,minimum size=1.1mm,inner sep=0.3pt},
+		guard/.style={shape=circle,minimum size=0mm,inner sep=0pt},
+		netname/.style={shape=circle,minimum size=0mm,inner sep=0pt}]
+		%net label
+		\node[netname] at (2,1){$ N_C $};
+		%places of coloured net with coloured token
+		\node[place,label=above:$p_{C_1}$]	(p1) {};
+		\node[whitetoken] at(-0.12,0) {\tiny1};
+		\node[whitetoken] at(0.12,0) {\tiny1};
+		\node[place,label=above:$p_{C_2}$]	at (0,-2) (p2) {};
+		\node[whitetoken] at(-0.12,-2) {\tiny1};
+		\node[whitetoken] at(0.12,-2) {\tiny1};
+		\node[place,label=above:$p_{C_3}$]	at (0,-4) (p3) {};
+		\node[whitetoken] at(-0.12,-4) {\tiny1};
+		\node[whitetoken] at(0.12,-4) {\tiny1};
+		\node[place,label=above:$p_{C_4}$] at(4,-1)	(p4){};
+		\node[place,label=above:$p_{C_5}$] at(4,-3)	(p5){};
+		%transition tc1
+		\node[transition, label=above:$t_{C_1}$] at(2,-1) (t1){}
+		edge[pre] node[above,near end]{$x$} (p1)
+		edge[pre] node[above,very near end]{$y$}(p2)
+		edge[pre] node[above,very near end]{$z$}(p3)
+		edge[post] node[above]{$x$}(p4);
+		\node[guard] at(3,-1.5){$g_{t_{c_1}}$};
+		%transition tc2
+		\node[transition, label=above:$t_{C_2}$] at(2,-3) (t2){}
+		edge[pre] node[below,very near end,xshift=-2pt]{$2x$}(p1)
+		edge[pre] node[below,very near end]{$2y$}(p2)
+		edge[pre] node[below,near end]{$2z$}(p3)
+		edge[post] node[above]{$2x$}(p5);
+		\node[guard] at(3,-3.5){$g_{t_{c_2}}$};
+		\end{tikzpicture}
+	\end{center}
+	\caption{gefärbtes Petri Netz mit blockierenden Guards}
+	\label{fig:petrinet}
+\end{figure}
+
+\subsection{Pseudocode}
+\begin{algorithm}
+	\caption{Berechne $y = x^n$}
+	\begin{algorithmic}
+		\REQUIRE $n \geq 0 \vee x \neq 0$
+		\ENSURE $y = x^n$
+		\STATE $y \leftarrow 1$
+		\IF{$n < 0$}
+		\STATE $X \leftarrow 1 / x$
+		\STATE $N \leftarrow -n$
+		\ELSE
+		\STATE $X \leftarrow x$
+		\STATE $N \leftarrow n$
+		\ENDIF
+		\WHILE{$N \neq 0$}
+		\IF{$N$ ist gerade}
+		\STATE $X \leftarrow X \times X$
+		\STATE $N \leftarrow N / 2$
+		\ENDIF
+		\ENDWHILE
+	\end{algorithmic}
+\end{algorithm}

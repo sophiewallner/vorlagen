@@ -1,0 +1,87 @@
+\documentclass[a4paper, 11pt]{scrartcl}
+\input{Resources/pakete}
+\begin{document}
+	
+% Titelblatt
+\begin{titlepage}
+	\centering
+	\includegraphics[width=0.7\textwidth]{Resources/unirostock.png}\par
+	\vspace{3cm}
+	{\scshape\Large Masterarbeit \par}
+	\vspace{1.5cm}
+	{\huge\bfseries Titel dieser Arbeit \par}
+	\vspace{3cm}
+	{\Large Autorin dieser Arbeit \par}
+	{\large Matrikel-Nr.: \textsc{213200687} \par}
+	\vspace{3cm}
+	Betreuer \& Erstgutachter \par
+	Prof. Margot \textsc{Doktor}\par
+	\vspace{0.8cm}
+	Zweitgutachter \par
+	Dr. Margot \textsc{Doktor}
+	\vfill
+	{\large \today\par}
+\end{titlepage}
+
+
+% Inhaltsverzeichnis
+\pagestyle{empty}
+\tableofcontents
+
+\newpage
+
+% Abstract
+\pagestyle{empty}
+\begin{abstract}
+	\blindtext
+\end{abstract}
+\newpage
+
+% Danksagung
+\pagestyle{empty}
+\begin{danksagung}
+	\blindtext
+\end{danksagung}
+
+\newpage
+
+% Eigentlicher Inhalt
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.1pt}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\fancyhead[R]{\normalfont \thepage}
+\fancyhead[L]{\normalfont \leftmark}
+
+\input{Resources/beispiele}
+\newpage
+
+% Literaturverzeichnis
+\pagenumbering{Roman}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.0pt}
+\fancyhead[R]{\normalfont \thepage}
+\bibliography{literatur}
+\bibliographystyle{alphadin}
+
+\newpage
+
+% Eidesstattliche Erklärung
+\pagestyle{empty}
+\section*{Eidesstattliche Versicherung}
+
+Ich versichere eidesstattlich durch eigenhändige Unterschrift, dass ich die Arbeit selbstständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. Alle Stellen, die wörtlich oder sinngemäß aus Veröffentlichungen entnommen sind, habe ich als solche kenntlich gemacht. Die Arbeit ist noch nicht veröffentlicht und ist in gleicher oder ähnlicher Weise noch nicht als Studienleistung zur Anerkennung oder Bewertung vorgelegt worden. Ich weiß, dass bei Abgabe einer falschen Versicherung die Prüfung als nicht bestanden zu gelten hat.
+
+\vspace*{1.5cm}
+
+Rostock, den 
+
+
+\vspace*{1.5cm}
+
+\rule{0.3\textwidth}{0.4pt}\\
+Sophie Wallner
+
+\end{document}

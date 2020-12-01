@@ -1,0 +1,102 @@
+\makeatletter
+
+% Set the left and right margins (Einzug l/r)
+\setbeamersize{text margin left=1em,text margin right=1em}
+
+% Schriftgrößen
+\setbeamerfont{title}{series=\bfseries,size=\LARGE}
+\setbeamerfont{subtitle}{series=\bfseries,size=\Large}
+\setbeamerfont{frametitle}{series=\bfseries,size=\small}
+\setbeamerfont{block title}{series=\bfseries,size=\normalsize}
+\setbeamerfont{normalsize}{size=\normalsize}
+\setbeamerfont{largesize}{size=\large}
+\setbeamerfont{headline}{size=\small}
+\setbeamerfont{footline}{size=\tiny}
+
+% Schriftfarben
+\setbeamercolor{title}{fg=black}
+\setbeamercolor{subtitle}{fg=black}
+\setbeamercolor{frametitle}{fg=blue}
+\setbeamercolor{block title}{fg=black}
+\setbeamercolor{structure}{fg=black}
+\setbeamercolor{headline}{fg=black}
+\setbeamercolor{footline}{fg=black}
+\setbeamercolor{normal text}{fg=black}
+
+\def\insertframetitle{}
+
+% Itemize Items als kleine, einstellbare Circles und nicht die Standard-Pfeile
+\newcommand\centerbox[1]{$\vcenter{\hbox{#1}}$}
+\defbeamertemplate*{itemize item}{custom circle}[1][.5ex]{%
+  \centerbox{\tikz\fill (0,0) circle (#1);}}
+\defbeamertemplate*{itemize subitem}{custom circle}[1][.4ex]{%
+  \centerbox{\tikz\fill (0,0) circle (#1);}}
+\defbeamertemplate*{itemize subsubitem}{custom circle}[1][.3ex]{%
+  \centerbox{\tikz\fill (0,0) circle (#1);}}
+
+\setbeamertemplate{itemize item}[custom circle][1.5pt]
+
+% Navigationssymbole weg
+\setbeamertemplate{navigation symbols}{}
+
+% Redefinition der Kopfzeile, Frametitle ist immer in Kopfzeile
+\setbeamertemplate{frametitle}{}
+\setbeamertemplate{headline}{
+  \centering
+  \begin{minipage}{\dimexpr\paperwidth-\beamer@leftmargin-\beamer@rightmargin\relax}
+  \vspace*{10pt}
+  \usebeamerfont{frametitle}
+  \insertframetitle
+  \vspace*{-10pt} \par
+  \rule{\linewidth}{0.5pt}
+  \end{minipage}\vskip2pt
+}
+% Redefinition der Fußzeile
+\setbeamertemplate{footline}{
+   \centering
+   \begin{minipage}{\dimexpr\paperwidth-\beamer@leftmargin-\beamer@rightmargin\relax}
+   \centering
+   \rule{\linewidth}{0.5pt}
+   \usebeamerfont{footline}
+   \usebeamercolor{footline}
+   \insertsection
+   \hfill
+   \insertpagenumber/\inserttotalframenumber
+   \end{minipage}\vskip2pt
+}
+
+% Redefinition der Titelseite
+\setbeamertemplate{title page}{
+  \centering
+  \inserttitlegraphic \par
+    \vspace*{40pt}
+  \usebeamerfont{frametitle}{Verteidigung der Masterarbeit} \par 
+  \usebeamerfont{subtitle}\inserttitle \par
+    \vspace*{10pt}
+  \usebeamerfont{frametitle}{von} \par
+  \usebeamerfont{largesize}\insertauthor \par
+    \vspace*{10pt}
+  \usebeamerfont{frametitle}{betreut durch} \par
+  \usebeamerfont{largesize}{Prof. Karsten Wolf} \par
+  %Uni und Datum, nicht unbedingt notwendig
+  % \vspace*{20pt}
+  % \usebeamerfont{largesize}\insertinstitute \par
+  % \usebeamerfont{normalsize}\insertdate \par
+}
+
+% Hintergrundbild, sieht aber nicht so gut aus
+% \setbeamertemplate{background}{
+%    \vbox to \paperheight{\vfil\hbox to \paperwidth{\hfil\includegraphics[width=0.6\paperwidth]{Resources/pic-unirostocklogo}\hfil}\vfil}
+% }
+
+\makeatother
+
+\titlegraphic{
+  \begin{picture}(0,0)
+    \put(70,10){\makebox(0,0)[rt]{
+    \includegraphics[width=0.4\textwidth]{Resources/pic-unirostock}}}
+  \end{picture}}
+\title{Abstraktion und Abstraktionsverfeinerung mit Hilfe der Skelettnetzabstraktion für Petrinetze}
+\author{Sophie Wallner}
+\institute{Universität Rostock}
+\date{11.12.2020}
